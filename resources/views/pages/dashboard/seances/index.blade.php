@@ -1,6 +1,6 @@
 @extends('layouts.dashboard')
 
-@section('page.title', "Bienvenue ".Auth::user()->firstname ." et bonne séance 💪🏼")
+@section('page.title', "Mes séances")
 
 @section('page.content')
 

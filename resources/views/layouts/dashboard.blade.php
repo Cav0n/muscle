@@ -32,7 +32,9 @@
             </div>
         @endif
 
-        @include('components.public.forms.feedbacks.success')
+        <div class="px-4 md:px-0">
+            @include('components.public.forms.feedbacks.success')
+        </div>
 
         <div class="flex flex-col gap-4">
             @yield("page.content")
