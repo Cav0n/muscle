@@ -22,7 +22,7 @@ class SeanceController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.dashboard.seances.create');
     }
 
     /**
@@ -30,15 +30,14 @@ class SeanceController extends Controller
      */
     public function store(StoreSeanceRequest $request)
     {
-        $request->validate([
-            'date' => 'required|date'
-        ]);
-
         $request->request->add([
             'initiated_by_id' => Auth::id()
         ]);
 
         $seance = Seance::create($request->toArray());
+
+        return redirect(route('dashboard.seances.index'))
+            ->withSuccess("La séance du {$seance->date->format('d/m/Y')} à été créée !");
     }
 
     /**
@@ -54,7 +53,7 @@ class SeanceController extends Controller
      */
     public function edit(Seance $seance)
     {
-        //
+        return view('pages.dashboard.seances.edit', ['seance' => $seance]);
     }
 
     /**
@@ -62,7 +61,10 @@ class SeanceController extends Controller
      */
     public function update(UpdateSeanceRequest $request, Seance $seance)
     {
-        //
+        $seance->update($request->toArray());
+
+        return redirect(route('dashboard.seances.index'))
+            ->withSuccess("La séance du {$seance->date->format('d/m/Y')} à été mise à jour !");
     }
 
     /**

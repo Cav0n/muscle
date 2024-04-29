@@ -21,7 +21,7 @@ class ExerciceController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.dashboard.exercices.create');
     }
 
     /**
@@ -29,7 +29,10 @@ class ExerciceController extends Controller
      */
     public function store(StoreExerciceRequest $request)
     {
-        //
+        $exercice = Exercice::create($request->toArray());
+
+        return redirect(route('dashboard.exercices.index'))
+            ->withSuccess("L'exercice {$exercice->name} a été créé.");
     }
 
     /**
@@ -45,7 +48,9 @@ class ExerciceController extends Controller
      */
     public function edit(Exercice $exercice)
     {
-        //
+        return view('pages.dashboard.exercices.edit', [
+            'exercice' => $exercice
+        ]);
     }
 
     /**
@@ -53,7 +58,10 @@ class ExerciceController extends Controller
      */
     public function update(UpdateExerciceRequest $request, Exercice $exercice)
     {
-        //
+        $exercice->update($request->toArray());
+
+        return redirect(route('dashboard.exercices.index'))
+            ->withSuccess("L'exercice {$exercice->name} a été mis à jour.");
     }
 
     /**
@@ -61,6 +69,11 @@ class ExerciceController extends Controller
      */
     public function destroy(Exercice $exercice)
     {
-        //
+        $name = $exercice->name;
+
+        $exercice->delete();
+
+        return redirect(route('dashboard.exercices.index'))
+            ->withSuccess("L'exercice {$name} a été supprimé.");
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class UpdateExerciceRequest extends FormRequest
 {
@@ -11,7 +12,7 @@ class UpdateExerciceRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return Auth::check();
     }
 
     /**
@@ -22,7 +23,8 @@ class UpdateExerciceRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'nullable',
+            'category' => 'nullable'
         ];
     }
 }

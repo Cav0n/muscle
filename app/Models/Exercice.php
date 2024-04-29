@@ -32,4 +32,23 @@ class Exercice extends Model
             ])
             ->using(ExerciceSeanceUserPivot::class);
     }
+
+    /**
+     * Get the availables categories.
+     */
+    public static function categories_available()
+    {
+        $categories = [
+            "arms" => __("arms"),
+            "legs" => __("legs"),
+            "back" => __("back"),
+            "shoulders" => __("shoulders"),
+            "pectorals" => __("pectorals"),
+            "abs" => __("abs"),
+        ];
+
+        asort($categories);
+
+        return $categories;
+    }
 }

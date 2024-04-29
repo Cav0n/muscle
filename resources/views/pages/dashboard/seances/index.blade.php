@@ -2,13 +2,13 @@
 
 @section('page.title', "Mes séances")
 
+@section('page.buttons')
+@include('components.public.buttons.link', [
+    'label' => 'Nouveau',
+    'url' => route('dashboard.seances.create')
+])
+@endsection
+
 @section('page.content')
-
-@if (Auth::user()->seances->count() <= 0)
-<div class="p-4 md:p-0">
-    <p>Il semblerait que vous n'ayez aucune séance pour le moment...</p>
-</div>
-@else
-
-@endif
+<livewire:tables.seance-table />
 @endsection

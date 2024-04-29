@@ -41,9 +41,9 @@ Route::middleware('auth')->group(function () {
                 Route::get('/', 'index')->name('index');
                 Route::get('/new', 'create')->name('create');
                 Route::post('/new', 'store')->name('store');
-                Route::get('/{exercice}', 'edit')->name('edit');
-                Route::post('/{exercice}', 'update')->name('update');
-                Route::delete('/{exercice}', 'destroy')->name('destroy');
+                Route::get('/{seance}', 'edit')->name('edit');
+                Route::post('/{seance}', 'update')->name('update');
+                Route::delete('/{seance}', 'destroy')->name('destroy');
         });
     });
 });

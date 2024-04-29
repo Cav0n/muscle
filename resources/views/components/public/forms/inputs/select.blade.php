@@ -15,7 +15,7 @@
         @isset($wireModel) wire:model.live='{{$wireModel}}' @endisset
 
         @class([
-            "w-full px-4 py-2 rounded border border-neutral-300 bg-white dark:bg-neutral-800 dark:border-neutral-600 dark:text-white focus-within:border-yellow-600 focus-within:shadow-inner !outline-none transition-all duration-300 !ring-0 select-none",
+            "w-full px-4 py-2 rounded-md border border-neutral-300 bg-white dark:bg-neutral-800 dark:border-neutral-600 dark:text-white focus-within:border-yellow-600 focus-within:shadow-inner !outline-none transition-all duration-300 !ring-0 select-none",
             'disabled:bg-neutral-200 disabled:text-neutral-600 disabled:cursor-not-allowed disabled:select-none',
             'placeholder:text-gray-400' => !$errors->has($name ?? $id),
             'border-red-600 bg-red-100 text-red-600 placeholder:text-red-600' => $errors->has($name ?? $id),

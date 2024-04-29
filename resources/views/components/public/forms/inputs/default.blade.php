@@ -17,7 +17,7 @@
             @isset($wireModel) wire:model.live.debounce.{{$wireDebounce ?? 250}}ms='{{$wireModel}}' @endisset
 
             @class([
-                "w-full px-4 py-2 rounded border border-neutral-300 bg-white dark:bg-neutral-800 dark:border-neutral-600 focus-within:border-yellow-600 focus-within:shadow-inner !outline-none transition-all duration-300 !ring-0",
+                "w-full px-4 py-2 rounded-md border border-neutral-300 bg-white dark:bg-neutral-800 dark:border-neutral-600 focus-within:border-yellow-600 focus-within:shadow-inner !outline-none transition-all duration-300 !ring-0",
                 "text-neutral-900 dark:text-neutral-100",
                 'disabled:bg-neutral-200 dark:disabled:bg-neutral-700 disabled:text-neutral-600 dark:disabled:text-neutral-400 disabled:cursor-not-allowed disabled:select-none',
                 'placeholder:text-gray-400' => !$errors->has($name ?? $id),

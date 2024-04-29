@@ -13,13 +13,15 @@
             @include('components.public.forms.inputs.default', [
                 'id' => 'firstname',
                 'label' => 'Prénom',
-                'placeholder' => 'Votre superbe prénom'
+                'placeholder' => 'Votre superbe prénom',
+                'required' => true
             ])
 
             @include('components.public.forms.inputs.default', [
                 'id' => 'lastname',
                 'label' => 'Nom de famille',
-                'placeholder' => 'Votre magnifique nom de famille'
+                'placeholder' => 'Votre magnifique nom de famille',
+                'required' => true
             ])
 
             @include("components.public.forms.inputs.default", [
@@ -47,7 +49,7 @@
             ])
 
             @include('components.public.buttons.default', [
-                'label' => "Je me turbo connecte",
+                'label' => "Je me turbo inscrit",
                 'type' => 'submit'
             ])
         </form>

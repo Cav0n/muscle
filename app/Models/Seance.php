@@ -34,6 +34,18 @@ class Seance extends Model
         ];
     }
 
+    /**
+     * The "booted" method of the model.
+     *
+     * @return void
+     */
+    protected static function booted()
+    {
+        static::created(function ($seance) {
+            $seance->users()->attach($seance->initiated_by_id);
+        });
+    }
+
     /** The user who initiate the seance. */
     public function initiated_by(): BelongsTo
     {
