@@ -19,7 +19,7 @@
             @class([
                 "w-full px-4 py-2 rounded-md border border-neutral-300 bg-white dark:bg-neutral-800 dark:border-neutral-600 focus-within:border-yellow-600 focus-within:shadow-inner !outline-none transition-all duration-300 !ring-0",
                 "text-neutral-900 dark:text-neutral-100",
-                'disabled:bg-neutral-200 dark:disabled:bg-neutral-700 disabled:text-neutral-600 dark:disabled:text-neutral-400 disabled:cursor-not-allowed disabled:select-none',
+                'disabled:bg-neutral-200 dark:disabled:bg-neutral-700 disabled:text-neutral-600 dark:disabled:text-black disabled:cursor-not-allowed disabled:select-none',
                 'placeholder:text-gray-400' => !$errors->has($name ?? $id),
                 'border-red-600 bg-red-100 text-red-600 placeholder:text-red-600' => $errors->has($name ?? $id),
                 $inputClass ?? "" => isset($inputClass),
@@ -30,7 +30,7 @@
             </div>
 
             @if (isset($suffix))
-                <div class="h-full px-2 py-1 bg-neutral-100 text-neutral-500 rounded flex flex-col flex-shrink-0 select-none justify-center border">
+                <div class="h-full px-2 py-1 bg-neutral-100 dark:bg-neutral-900 dark:border-neutral-700 text-neutral-500 rounded flex flex-col flex-shrink-0 select-none justify-center border">
                     {{ $suffix }}
                 </div>
             @endif

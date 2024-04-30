@@ -5,7 +5,7 @@
 
     <h1 class="text-3xl font-bold text-center">MUSCLE MAX 💪🏼</h1>
 
-    <div class="p-4 bg-neutral-50 border shadow rounded">
+    <div class="p-4 bg-neutral-50 dark:bg-neutral-900 dark:border-neutral-800 border shadow rounded-xl">
         <form method="POST" action="{{ route('register') }}" class="flex flex-col gap-4">
 
             @csrf

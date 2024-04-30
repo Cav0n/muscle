@@ -36,8 +36,8 @@
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                 @forelse ($seance->users as $user)
-                    <div class="p-3 rounded-md bg-neutral-50 border shadow flex flex-col gap-2">
-                        <div class="bg-neutral-200 aspect-square rounded-lg w-full">
+                    <div class="p-3 rounded-xl bg-neutral-50 dark:bg-neutral-800 dark:border-neutral-700 border shadow flex flex-col gap-2">
+                        <div class="bg-neutral-200 dark:bg-neutral-700 aspect-square rounded-lg w-full">
 
                         </div>
                         <div class="flex items-center justify-center gap-2">
@@ -58,8 +58,8 @@
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                 @forelse ($seance->invites as $seanceInvite)
-                    <div class="p-3 rounded-md bg-neutral-50 border shadow flex flex-col gap-2">
-                        <div class="bg-neutral-200 aspect-square rounded-lg w-full">
+                    <div class="p-3 rounded-md bg-neutral-50 dark:bg-neutral-800 dark:border-neutral-700 border shadow flex flex-col gap-2">
+                        <div class="bg-neutral-200 dark:bg-neutral-700 aspect-square rounded-lg w-full">
 
                         </div>
                         <div class="flex items-center justify-center gap-2">

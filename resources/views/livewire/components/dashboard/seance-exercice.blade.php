@@ -1,4 +1,4 @@
-<div class="rounded-md bg-neutral-50 border shadow flex flex-col">
+<div class="rounded-md bg-neutral-50 dark:bg-neutral-800 dark:border-neutral-700 border shadow flex flex-col">
     <div class="flex flex-wrap justify-between items-center gap-2 px-4 py-2 select-none cursor-pointer seance-exercice-summary">
         <p class="text-lg font-medium">
             {{ $exercice->name }}

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ config('app.locale') }}" class="bg-white">
+<html lang="{{ config('app.locale') }}" class="bg-white dark:bg-black">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -12,7 +12,7 @@
 
     @stack("page.head")
 </head>
-<body class="w-full relative overflow-x-clip flex flex-col md:flex-row bg-white">
+<body class="w-full relative overflow-x-clip flex flex-col md:flex-row bg-white dark:bg-black text-black dark:text-white">
     @include('components.public.forms.feedbacks.success')
     @include('components.public.forms.feedbacks.errors')
 
