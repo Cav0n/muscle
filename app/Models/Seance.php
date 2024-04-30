@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Seance extends Model
 {
@@ -59,7 +60,8 @@ class Seance extends Model
             ->withPivot([
                 'number_of_reps',
                 'number_of_series',
-                'weight'
+                'weight',
+                'user_id'
             ])
             ->using(ExerciceSeanceUserPivot::class);
     }
@@ -68,5 +70,11 @@ class Seance extends Model
     public function users(): BelongsToMany
     {
         return $this->belongsToMany(User::class);
+    }
+
+    /** Users invited to the seance. */
+    public function invites(): HasMany
+    {
+        return $this->hasMany(SeanceInvite::class);
     }
 }

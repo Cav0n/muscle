@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreSeanceRequest;
 use App\Http\Requests\UpdateSeanceRequest;
+use App\Models\Exercice;
 use App\Models\Seance;
 use Illuminate\Support\Facades\Auth;
 
@@ -30,13 +31,13 @@ class SeanceController extends Controller
      */
     public function store(StoreSeanceRequest $request)
     {
-        $request->request->add([
+        $request->merge([
             'initiated_by_id' => Auth::id()
         ]);
 
         $seance = Seance::create($request->toArray());
 
-        return redirect(route('dashboard.seances.index'))
+        return redirect(route('dashboard.seances.edit', ['seance' => $seance]))
             ->withSuccess("La séance du {$seance->date->format('d/m/Y')} à été créée !");
     }
 
@@ -76,5 +77,36 @@ class SeanceController extends Controller
 
         return back()
             ->withSuccess('Seance supprimée.');
+    }
+
+    /** Add an exercice to a seance. */
+    public function addExerciceToSeance(UpdateSeanceRequest $request, Seance $seance)
+    {
+        $request->validate([
+            'exercice_id' => 'required|exists:exercices,id'
+        ]);
+
+        $seance->exercices()
+            ->syncWithoutDetaching([
+                $request->exercice_id => [
+                    'user_id' => Auth::id()
+                ]
+            ]);
+
+        return back()
+            ->withSuccess("L'exercice a été ajouté à la séance !");
+    }
+
+    /** Remove an exercice from a seance. */
+    public function removeExerciceFromSeance(
+        UpdateSeanceRequest $request,
+        Seance $seance,
+        Exercice $exercice
+    ) {
+        $seance->exercices()
+            ->detach($exercice->id);
+
+        return back()
+            ->withSuccess("L'exercice a été ajouté à la séance !");
     }
 }

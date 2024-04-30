@@ -5,7 +5,7 @@
         </label>
     @endisset
 
-    <div class="relative w-full" wire:loading.class='animate-pulse'>
+    <div class="relative w-full flex gap-1 items-center" wire:loading.class='animate-pulse'>
         <input type="{{ $type ?? "text" }}" name="{{ $name ?? $id }}" id="{{ $id ?? $name }}" value="{{ old($name ?? $id ?? null, $value ?? null) }}"
             @isset($placeholder) placeholder="{{ $placeholder }}@if (isset($required) && $required) * @endif" @endisset
             @isset($min) min="{{ $min }}" @endisset
@@ -28,6 +28,12 @@
             <div wire:loading.class='opacity-100' class="absolute pointer-events-none opacity-0 bg-neutral-200/80 dark:bg-neutral-800/80 rounded backdrop-blur-sm left-0 top-0 w-full h-full flex justify-center items-center text-center">
                 <p>Chargement...</p>
             </div>
+
+            @if (isset($suffix))
+                <div class="h-full px-2 py-1 bg-neutral-100 text-neutral-500 rounded flex flex-col flex-shrink-0 select-none justify-center border">
+                    {{ $suffix }}
+                </div>
+            @endif
     </div>
 
     @error($name ?? $id)
