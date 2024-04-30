@@ -56,6 +56,5 @@
     </div>
 
     <a href="{{ route('login') }}" class="underline underline-offset-4 text-neutral-500 text-center">J'ai déjà un compte</a>
-
 </div>
 @endsection

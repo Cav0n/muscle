@@ -39,4 +39,19 @@ class SeanceInviteController extends Controller
         ]))
             ->withSuccess("L'invitation pour {$seanceInvite->email} a été supprimée !");
     }
+
+    /**
+     * Accept a seance invite.
+     */
+    public function accept(SeanceInvite $seanceInvite)
+    {
+        $seance = $seanceInvite->seance;
+
+        $seance->users()->syncWithoutDetaching($seanceInvite->user->id);
+
+        $seanceInvite->delete();
+
+        return redirect(route('dashboard.seances.edit', ['seance' => $seance]))
+            ->withSuccess("Vous avez accepté l'invitation de {$seanceInvite->invited_by?->firstname}");
+    }
 }

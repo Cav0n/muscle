@@ -7,6 +7,7 @@ namespace App\Models;
 use App\Notifications\Users\UserRegisteredConfirmation;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -58,6 +59,8 @@ class User extends Authenticatable
     {
         static::created(function ($user) {
             $user->notify(new UserRegisteredConfirmation($user));
+
+            SeanceInvite::where('email', $user->email)->update(['user_id' => $user->id]);
         });
     }
 
@@ -65,5 +68,11 @@ class User extends Authenticatable
     public function seances(): BelongsToMany
     {
         return $this->belongsToMany(Seance::class);
+    }
+
+    /** Invitation sent to the user. */
+    public function invitations_received(): HasMany
+    {
+        return $this->hasMany(SeanceInvite::class, 'user_id');
     }
 }

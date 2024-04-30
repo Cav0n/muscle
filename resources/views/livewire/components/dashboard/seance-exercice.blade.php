@@ -9,7 +9,7 @@
     </div>
 
     <div wire:ignore class="max-h-0 overflow-y-hidden seance-exercice-details">
-        <div class="grid md:grid-cols-3 gap-4  px-4 pt-2 pb-4">
+        <div class="grid md:grid-cols-3 gap-4 px-4 pt-2 pb-4">
             @include('components.public.forms.inputs.default', [
                 'id' => 'number_of_reps',
                 'label' => 'Nombre de reps',

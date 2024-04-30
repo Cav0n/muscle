@@ -17,7 +17,7 @@
 
         @include('components.dashboard.sidebar-item.default', [
             'url' => route('dashboard.seances.index'),
-            'current' => request()->routeIs('dashboard.seances.*'),
+            'current' => request()->routeIs('dashboard.seances.*') && !request()->routeIs('dashboard.seances.invites*'),
             'label' => "Mes séances",
             'icon' => 'calendar-days',
         ])
@@ -30,7 +30,15 @@
         ])
     </div>
 
-    <div class="w-full flex flex-col gap-1 mt-auto pb-3 px-4">
+    <div class="w-full flex flex-col gap-3 md:gap-2 mt-auto pb-3 px-4">
+        @include('components.dashboard.sidebar-item.default', [
+            'url' => route('dashboard.seances.invites.index'),
+            'current' => request()->routeIs('dashboard.seances.invites.*'),
+            'label' => "Invitations reçus",
+            'icon' => 'inbox-arrow-down',
+            'number' => Auth::user()->invitations_received->count()
+        ])
+
         @include('components.dashboard.sidebar-item.default', [
             'url' => route('logout'),
             'label' => "Déconnexion",

@@ -43,8 +43,10 @@ Route::middleware('auth')->group(function () {
                     ->name('invites.')
                     ->controller(SeanceInviteController::class)
                     ->group(function () {
+                        Route::view('/', 'pages.dashboard.seances.invitations.index')->name('index');
                         Route::post('/new', 'store')->name('store');
                         Route::any('/{seanceInvite}/suppression', 'destroy')->name('destroy');
+                        Route::get('/{seanceInvite}/accepter', 'accept')->name('accept');
                 });
 
                 Route::get('/', 'index')->name('index');

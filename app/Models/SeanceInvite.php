@@ -2,9 +2,12 @@
 
 namespace App\Models;
 
+use App\Notifications\Seances\InviteNotification;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Notification;
 
 class SeanceInvite extends Model
 {
@@ -34,7 +37,14 @@ class SeanceInvite extends Model
                 $seanceInvite->updateQuietly([
                     'user_id' => $user->id
                 ]);
+
+                $user->notify(new InviteNotification($seanceInvite));
+            } else {
+                Notification::route('mail', $seanceInvite->email)
+                    ->notify(new InviteNotification($seanceInvite));
+
             }
+
         });
     }
 
