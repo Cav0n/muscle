@@ -19,4 +19,19 @@
         ])
     @endif
 </div>
+
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8 px-4 md:px-0">
+    <div class="p-4 rounded-xl flex flex-col justify-center items-center text-center bg-neutral-100 dark:bg-neutral-800">
+        <p class="text-2xl lg:text-4xl font-bold">{{ Auth::user()->seances->count() }}</p>
+        <p class="text-sm md:text-base lg:text-lg xl:text-xl">Séances effectuées</p>
+    </div>
+    <div class="p-4 rounded-xl flex flex-col justify-center items-center text-center bg-neutral-100 dark:bg-neutral-800">
+        <p class="text-2xl lg:text-4xl font-bold">{{ Auth::user()->seances()->count() }}</p>
+        <p class="text-sm md:text-base lg:text-lg xl:text-xl">Exercices effectuées</p>
+    </div>
+    <div class="p-4 rounded-xl flex flex-col justify-center items-center text-center bg-neutral-100 dark:bg-neutral-800">
+        <p class="text-2xl lg:text-4xl font-bold">{{ Auth::user()->seances->count() }} kg</p>
+        <p class="text-sm md:text-base lg:text-lg xl:text-xl">Soulevés !</p>
+    </div>
+</div>
 @endsection
