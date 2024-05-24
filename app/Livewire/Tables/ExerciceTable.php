@@ -6,6 +6,7 @@ use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
 use App\Models\Exercice;
 use Illuminate\Database\Eloquent\Builder;
+use Rappasoft\LaravelLivewireTables\Views\Columns\ImageColumn;
 use Rappasoft\LaravelLivewireTables\Views\Filters\SelectFilter;
 
 class ExerciceTable extends DataTableComponent
@@ -40,6 +41,14 @@ class ExerciceTable extends DataTableComponent
         return [
             Column::make("Id", "id")
                 ->hideIf(true),
+            ImageColumn::make('Image')
+                ->location(
+                    fn($row) => $row->images->first()->url
+                )
+                ->attributes(fn($row) => [
+                    'class' => 'rounded-lg w-20 object-cover',
+                    'alt' => $row->name . ' Avatar',
+                ]),
             Column::make("Nom", "name")
                 ->sortable()
                 ->searchable(),

@@ -68,6 +68,12 @@
                 "value" => $exercice->equipment,
             ])
         </x-dashboard.container.default>
+
+        <x-dashboard.container.default :title='"Images"'>
+            @foreach ($exercice->images as $image)
+                <img src="{{ $image->url }}" alt="Image de l'exercice" class="aspect-square w-full rounded-lg object-cover">
+            @endforeach
+        </x-dashboard.container.default>
     </div>
 </form>
 @endsection

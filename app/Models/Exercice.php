@@ -53,6 +53,14 @@ class Exercice extends Model
             ->using(ExerciceSeanceUserPivot::class);
     }
 
+    /** Images of the exercice. */
+    public function images(): BelongsToMany
+    {
+        return $this->belongsToMany(Image::class)
+            ->withPivot('number')
+            ->orderByPivot('number');
+    }
+
     /**
      * Get the availables categories.
      */
