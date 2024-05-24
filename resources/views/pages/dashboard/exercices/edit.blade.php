@@ -24,6 +24,14 @@
                 'value' => $exercice->name
             ])
         </x-dashboard.container.default>
+
+        <x-dashboard.container.default :title='"Instructions"'>
+            @foreach (($exercice->instructions ?? []) as $instruction)
+                <p>
+                    {{ $instruction }}
+                </p>
+            @endforeach
+        </x-dashboard.container.default>
     </div>
 
     {{-- Right side --}}
@@ -34,6 +42,30 @@
                 "label" => "Catégorie",
                 "options" => \App\Models\Exercice::categories_available(),
                 "value" => $exercice->category
+            ])
+
+            @include('components.public.forms.inputs.select', [
+                "id" => "level",
+                "label" => "Niveau",
+                "value" => $exercice->level,
+                "options" => [
+                    'beginner' => 'beginner', 'intermediate' => 'intermediate', 'expert' => 'expert'
+                ],
+            ])
+
+            @include('components.public.forms.inputs.select', [
+                "id" => "force",
+                "label" => "Type",
+                "value" => $exercice->force,
+                "options" => [
+                    'pull' => 'pull', 'push' => 'push', 'expert' => 'expert'
+                ],
+            ])
+
+            @include('components.public.forms.inputs.default', [
+                "id" => "equipment",
+                "label" => "Équipement",
+                "value" => $exercice->equipment,
             ])
         </x-dashboard.container.default>
     </div>

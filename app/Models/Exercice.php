@@ -19,7 +19,27 @@ class Exercice extends Model
     protected $fillable = [
         'name',
         'category',
+        'level',
+        'force',
+        'equipment',
+        'primary_muscles',
+        'secondary_muscles',
+        'instructions'
     ];
+
+    /**
+     * Get the attributes that should be cast.
+     *
+     * @return array<string, string>
+     */
+    protected function casts(): array
+    {
+        return [
+            'primary_muscles' => 'array',
+            'secondary_muscles' => 'array',
+            'instructions' => 'array',
+        ];
+    }
 
     /** Seances of the exercice. */
     public function seances(): BelongsToMany
