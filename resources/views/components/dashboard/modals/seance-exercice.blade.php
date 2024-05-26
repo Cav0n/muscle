@@ -7,11 +7,7 @@
 <form action="{{ route('dashboard.seances.exercices.add', ['seance' => $seance]) }}" method="POST" class="flex flex-col gap-4">
     @csrf
 
-    @include('components.public.forms.inputs.select', [
-        'id' => 'exercice_id',
-        'label' => 'Choisissez un exercice',
-        'options' => \App\Models\Exercice::get()->pluck('name', 'id')
-    ])
+    @livewire('exercices.exercice-search')
 
     @include('components.public.buttons.default', [
         'type' => "submit",
