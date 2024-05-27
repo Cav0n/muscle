@@ -34,13 +34,13 @@
                 ])
             </div>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div class="grid grid-cols-2 lg:grid-cols-3 gap-4">
                 @forelse ($seance->users as $user)
                     <div class="p-3 rounded-xl bg-neutral-50 dark:bg-neutral-800 dark:border-neutral-700 border shadow flex flex-col gap-2">
                         <div class="bg-neutral-200 dark:bg-neutral-700 aspect-square rounded-lg w-full">
 
                         </div>
-                        <div class="flex items-center justify-center gap-2">
+                        <div class="flex flex-col md:flex-row items-center justify-center gap-2 text-center">
                             @if ($user->id == $seance->initiated_by_id)
                                 <x-heroicon-o-sparkles class="w-5 h-5 flex-shrink-0"/>
                             @endif
@@ -56,7 +56,7 @@
 
             <p class="text-xl md:text-2xl font-semibold">Invitations</p>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div class="grid grid-cols-2 lg:grid-cols-3 gap-4">
                 @forelse ($seance->invites as $seanceInvite)
                     <div class="p-3 rounded-md bg-neutral-50 dark:bg-neutral-800 dark:border-neutral-700 border shadow flex flex-col gap-2">
                         <div class="bg-neutral-200 dark:bg-neutral-700 aspect-square rounded-lg w-full">

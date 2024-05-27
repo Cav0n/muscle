@@ -8,7 +8,7 @@
         </p>
     </div>
 
-    <div wire:ignore class="max-h-0 overflow-y-hidden seance-exercice-details">
+    <div wire:ignore class="max-h-0 overflow-y-hidden seance-exercice-details transition-all duration-500">
         <div class="grid md:grid-cols-3 gap-4 px-4 pt-2 pb-4">
             @include('components.public.forms.inputs.default', [
                 'id' => 'number_of_reps',
@@ -31,6 +31,14 @@
                 'wireModel' => 'weight',
                 'suffix' => "kg"
             ])
+
+            <div class="flex">
+                @include('components.public.buttons.link', [
+                    'url' => route('dashboard.seances.exercices.remove', ['seance' => $seance, 'exercice' => $exercice]),
+                    'label' => "Supprimer",
+                    'color' => 'red'
+                ])
+            </div>
         </div>
     </div>
 </div>
@@ -39,7 +47,7 @@
     <script type="module">
         $('.seance-exercice-summary').on('click', function () {
             $(this).siblings('.seance-exercice-details')
-                .toggleClass('max-h-0 max-h-full')
+                .toggleClass('max-h-0 max-h-screen')
 
             $(this).find('.chevron-container').toggleClass('rotate-180')
         });

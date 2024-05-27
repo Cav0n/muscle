@@ -104,6 +104,7 @@ class SeanceController extends Controller
         Exercice $exercice
     ) {
         $seance->exercices()
+            ->wherePivot('user_id', Auth::id())
             ->detach($exercice->id);
 
         return back()
