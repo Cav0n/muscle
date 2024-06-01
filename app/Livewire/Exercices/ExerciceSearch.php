@@ -23,6 +23,7 @@ class ExerciceSearch extends Component
     public function updatedSearch()
     {
         $this->exercices = Exercice::where('name', 'like', "%{$this->search}%")
+            ->orWhere('other_names', 'like', "%{$this->search}%")
             ->orderBy('name')->get();
     }
 

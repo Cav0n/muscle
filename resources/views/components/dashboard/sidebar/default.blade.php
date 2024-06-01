@@ -28,6 +28,13 @@
             'label' => "Mes exercices",
             'icon' => 'book-open'
         ])
+
+        @include('components.dashboard.sidebar-item.default', [
+            'url' => route('dashboard.user-settings.index'),
+            'current' => request()->routeIs('dashboard.user-settings.*'),
+            'label' => "Paramètres",
+            'icon' => 'cog-8-tooth'
+        ])
     </div>
 
     <div class="w-full flex flex-col gap-3 md:gap-2 mt-auto pb-3 px-4">

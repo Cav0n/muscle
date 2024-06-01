@@ -41,6 +41,9 @@ class ExerciceTable extends DataTableComponent
         return [
             Column::make("Id", "id")
                 ->hideIf(true),
+            Column::make("Autre noms", "other_names")
+                ->hideIf(true)
+                ->searchable(),
             ImageColumn::make('Image')
                 ->location(
                     fn($row) => $row->images->first()->url
@@ -51,7 +54,8 @@ class ExerciceTable extends DataTableComponent
                 ]),
             Column::make("Nom", "name")
                 ->sortable()
-                ->searchable(),
+                ->searchable()
+                ->view('components.dashboard.table-cells.exercice-names'),
             Column::make("Categorie", "category")
                 ->format(
                     fn($value, $row, Column $column) => __($value)

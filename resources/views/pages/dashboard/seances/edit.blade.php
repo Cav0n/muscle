@@ -16,7 +16,7 @@
                 ])
             </div>
 
-            @forelse ($seance->exercices as $exercice)
+            @forelse ($seance->exercices()->wherePivot('user_id', Auth::id())->get() as $exercice)
                 @livewire('components.dashboard.seance-exercice', [
                     'exercice' => $exercice,
                     'seance' => $seance

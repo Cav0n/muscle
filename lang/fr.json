@@ -223,5 +223,11 @@
     "back": "Dos",
     "shoulders": "Epaules",
     "pectorals": "Péctoraux",
-    "abs": "Abdos"
+    "abs": "Abdos",
+    "beginner": "Débutant",
+    "intermediate": "Confirmé",
+    "expert": "Expert",
+    "pull": "Tirage",
+    "push": "Pousser",
+    "static": "Statique"
 }

@@ -1,4 +1,4 @@
-<div class="input-container flex flex-col gap-1">
+<div class="input-container flex flex-col gap-1 w-full">
     @isset($label)
         <label for="{{ $id ?? $name }}" class="select-none">
             {{ $label }}
@@ -15,6 +15,7 @@
             @required(isset($required) && $required)
 
             @isset($wireModel) wire:model.live.debounce.{{$wireDebounce ?? 250}}ms='{{$wireModel}}' @endisset
+            @isset($wireEnter) wire:keydown.prevent.enter='{{ $wireEnter }}' @endisset
 
             @class([
                 "w-full px-4 py-2 rounded-md border border-neutral-300 bg-white dark:bg-neutral-800 dark:border-neutral-600 focus-within:border-yellow-600 focus-within:shadow-inner !outline-none transition-all duration-300 !ring-0",

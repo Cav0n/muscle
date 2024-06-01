@@ -18,6 +18,7 @@ class Exercice extends Model
      */
     protected $fillable = [
         'name',
+        'other_names',
         'category',
         'level',
         'force',
@@ -35,6 +36,7 @@ class Exercice extends Model
     protected function casts(): array
     {
         return [
+            'other_names' => 'array',
             'primary_muscles' => 'array',
             'secondary_muscles' => 'array',
             'instructions' => 'array',

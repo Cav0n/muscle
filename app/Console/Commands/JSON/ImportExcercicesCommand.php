@@ -14,7 +14,7 @@ class ImportExcercicesCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'app:import-excercices-command';
+    protected $signature = 'app:import:exercices';
 
     /**
      * The console command description.
@@ -44,7 +44,9 @@ class ImportExcercicesCommand extends Command
                     'equipment' => $exerciceDatas['equipment'],
                     'primary_muscles' => $exerciceDatas['primaryMuscles'],
                     'secondary_muscles' => $exerciceDatas['secondaryMuscles'],
-                    'instructions' => $exerciceDatas['instructions'],
+                    'instructions' => [
+                        'en' => $exerciceDatas['instructions']
+                    ],
                 ]);
 
                 if (file_exists(Storage::path("json/exercises/$folder/images/0.jpg"))) {

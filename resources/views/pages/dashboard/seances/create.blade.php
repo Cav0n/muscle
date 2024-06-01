@@ -17,7 +17,7 @@
     {{-- Left side --}}
     <div class="md:col-span-2 flex flex-col gap-4 md:gap-8">
         <x-dashboard.container.default>
-
+            <p class="text-neutral-700">Selectionnez la date sur la droite puis sauvegardez pour initier la séance !</p>
         </x-dashboard.container.default>
     </div>
 

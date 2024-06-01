@@ -23,10 +23,12 @@
                 'placeholder' => "Nom de l'exercice",
                 'value' => $exercice->name
             ])
+
+            @livewire('components.dashboard.exercice-names-form', ['exercice' => $exercice])
         </x-dashboard.container.default>
 
         <x-dashboard.container.default :title='"Instructions"'>
-            @foreach (($exercice->instructions ?? []) as $instruction)
+            @foreach (($exercice->instructions['en'] ?? []) as $instruction)
                 <p>
                     {{ $instruction }}
                 </p>
@@ -49,7 +51,9 @@
                 "label" => "Niveau",
                 "value" => $exercice->level,
                 "options" => [
-                    'beginner' => 'beginner', 'intermediate' => 'intermediate', 'expert' => 'expert'
+                    'beginner' => __('beginner'),
+                    'intermediate' => __('intermediate'),
+                    'expert' => __('expert')
                 ],
             ])
 
@@ -58,7 +62,9 @@
                 "label" => "Type",
                 "value" => $exercice->force,
                 "options" => [
-                    'pull' => 'pull', 'push' => 'push', 'expert' => 'expert'
+                    'pull' => __('pull'),
+                    'push' => __('push'),
+                    'static' => __('static')
                 ],
             ])
 

@@ -5,6 +5,7 @@ use App\Http\Controllers\ExerciceController;
 use App\Http\Controllers\SeanceController;
 use App\Http\Controllers\SeanceInviteController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserSettingController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
@@ -63,5 +64,12 @@ Route::middleware('auth')->group(function () {
                         Route::any('/{exercice}', 'removeExerciceFromSeance')->name('remove');
                 });
         });
+
+        Route::prefix('/user-settings')
+            ->name('user-settings.')
+            ->controller(UserSettingController::class)
+            ->group(function () {
+                Route::get('/', 'index')->name('index');
+            });
     });
 });

@@ -75,4 +75,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(SeanceInvite::class, 'user_id');
     }
+
+    /** Settings of the user. */
+    public function settings(): HasMany
+    {
+        return $this->hasMany(UserSetting::class);
+    }
 }
