@@ -70,6 +70,12 @@ class User extends Authenticatable
         return $this->belongsToMany(Seance::class);
     }
 
+    /** Favorites exercices of the user. */
+    public function exercice_favorites(): BelongsToMany
+    {
+        return $this->belongsToMany(Exercice::class, 'user_favorites_exercices');
+    }
+
     /** Invitation sent to the user. */
     public function invitations_received(): HasMany
     {

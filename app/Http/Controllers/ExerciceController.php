@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreExerciceRequest;
 use App\Http\Requests\UpdateExerciceRequest;
 use App\Models\Exercice;
+use Illuminate\Support\Facades\Auth;
 
 class ExerciceController extends Controller
 {
@@ -75,5 +76,16 @@ class ExerciceController extends Controller
 
         return redirect(route('dashboard.exercices.index'))
             ->withSuccess("L'exercice {$name} a été supprimé.");
+    }
+
+    /** Add the exercice to the user favorites. */
+    public function toggleFavorite(Exercice $exercice)
+    {
+        /** @var \App\Models\User */
+        $user = Auth::user();
+
+        $user->exercice_favorites()->toggle([$exercice->id]);
+
+        return back()->with('success', "Modification effectuée.");
     }
 }

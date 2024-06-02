@@ -33,6 +33,8 @@ Route::middleware('auth')->group(function () {
                 Route::get('/{exercice}', 'edit')->name('edit');
                 Route::post('/{exercice}', 'update')->name('update');
                 Route::delete('/{exercice}', 'destroy')->name('destroy');
+                Route::get('/{exercice}/favorites/toggle', 'toggleFavorite')->name('favorites.toggle');
+
         });
 
         Route::prefix('/seances')

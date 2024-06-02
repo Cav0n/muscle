@@ -38,6 +38,11 @@
 
     {{-- Right side --}}
     <div class="flex flex-col gap-4 md:gap-8">
+        @include('components.public.buttons.link', [
+            'label' => Auth::user()->exercice_favorites->contains($exercice->id) ? "Supprimer des favoris":"Ajouter aux favoris",
+            "url" => route('dashboard.exercices.favorites.toggle', ['exercice' => $exercice])
+        ])
+
         <x-dashboard.container.default>
             @include('components.public.forms.inputs.select', [
                 "id" => "category",
@@ -76,9 +81,11 @@
         </x-dashboard.container.default>
 
         <x-dashboard.container.default :title='"Images"'>
-            @foreach ($exercice->images as $image)
-                <img src="{{ $image->url }}" alt="Image de l'exercice" class="aspect-square w-full rounded-lg object-cover">
-            @endforeach
+            <div class="grid grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-4">
+                @foreach ($exercice->images as $image)
+                    <img src="{{ $image->url }}" alt="Image de l'exercice" class="aspect-square w-full rounded-lg object-cover">
+                @endforeach
+            </div>
         </x-dashboard.container.default>
     </div>
 </form>
