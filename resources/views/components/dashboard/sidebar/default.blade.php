@@ -1,5 +1,5 @@
 <div id="sidebar" class="fixed md:sticky top-0 -left-full opacity-0 md:opacity-100 md:left-0 w-full md:w-60 xl:w-80 z-50 h-[calc(100dvh)] bg-neutral-100 dark:bg-neutral-900 transition-all duration-500
-    flex flex-shrink-0 flex-col gap-8 md:border-r border-transparent md:hover:border-neutral-200 dark:md:hover:border-r-neutral-800 md:hover:shadow-lg">
+    flex flex-shrink-0 flex-col gap-8 md:rounded-r-2xl">
     <div class="w-full p-4 md:py-6 flex justify-between gap-2 md:justify-center items-center text-black dark:text-white">
         <p class="text-3xl md:text-2xl xl:text-3xl font-bold text-center">MUSCLE MAX 💪🏼</p>
         <button type="button" class="sidebar-toggle-button md:hidden">
